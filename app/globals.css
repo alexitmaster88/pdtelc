@@ -1,0 +1,253 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .text-style-override {
+    color: #130080;
+  }
+  
+  .text-style-override a:not([class*="bg-"]) {
+    color: #130080;
+    transition: color 0.2s ease;
+  }
+  
+  .text-style-override a:not([class*="bg-"]):hover {
+    color: rgba(19, 0, 128, 0.8);
+  }
+
+  .text-style-override h1 {
+    color: #130080;
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    text-shadow: 
+      0 0 1em rgba(255,255,255,0.4),
+      0 0 0.2em rgba(255,255,255,0.6),
+      0 0 0.1em rgba(19,0,128,0.5);
+  }
+
+  .text-style-override h2,
+  .text-style-override h3,
+  .text-style-override h4,
+  .text-style-override h5,
+  .text-style-override h6 {
+    color: #130080;
+    font-weight: 700;
+    letter-spacing: -0.025em;
+  }
+
+  .text-style-override p,
+  .text-style-override span,
+  .text-style-override label {
+    color: #130080;
+  }
+
+  .text-style-override input[type="text"],
+  .text-style-override input[type="email"],
+  .text-style-override input[type="password"],
+  .text-style-override textarea {
+    color: #130080;
+    border-color: rgba(19, 0, 128, 0.2);
+  }
+  
+  .text-style-override input[type="text"]:focus,
+  .text-style-override input[type="email"]:focus,
+  .text-style-override input[type="password"]:focus,
+  .text-style-override textarea:focus {
+    border-color: #130080;
+    box-shadow: 0 0 0 2px rgba(19, 0, 128, 0.2);
+  }
+}
+
+@layer base {
+  body {
+    overflow-x: hidden;
+    --bg-translate-y: 0px;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 120%;
+    background-image: url('/backgrounds/LongStatuePicture.png');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    z-index: -2;
+    transform: translateY(var(--bg-translate-y));
+    will-change: transform;
+    transition: transform 0.1s ease-out;
+    filter: saturate(1.05) contrast(1.05);
+  }
+
+  /* Overlay with blur for better readability */
+  body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(10px);
+    background-color: rgba(255, 255, 255, 0.58);
+    z-index: -1;
+  }
+  
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 231 100% 25%;
+    --card: 0 0% 100%;
+    --card-foreground: 231 100% 25%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 231 100% 25%;
+    --primary: 231 100% 25%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 221 83.2% 53.3%;
+    --radius: 0.5rem;
+
+    /* German flag colors */
+    --german-black: 0 0% 0%;
+    --german-red: 0 100% 50%;
+    --german-gold: 43 100% 50%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 217.2 91.2% 59.8%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 224.3 76.3% 48%;
+  }
+}
+
+/* ─── TELC Registration form utilities ─────────────────────────────────────── */
+/* Ported from newTelc — used by components/telc/registration/* */
+
+  .telc-btn-primary {
+    @apply bg-orange-500 text-white hover:bg-orange-600 px-6 py-3 rounded-lg font-semibold transition-colors disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .telc-btn-secondary {
+    @apply bg-gray-100 text-gray-900 hover:bg-gray-200 px-6 py-3 rounded-lg font-semibold transition-colors disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .form-group {
+    @apply mb-6;
+  }
+
+  .form-label {
+    @apply block text-sm font-medium mb-2 text-gray-900;
+  }
+
+  .form-input {
+    @apply w-full px-4 py-2 border border-gray-300 rounded-lg bg-white text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2;
+  }
+
+  .form-error {
+    @apply text-red-600 text-sm mt-1;
+  }
+
+  .step-indicator {
+    @apply flex items-center justify-between mb-8;
+  }
+
+  .step-dot {
+    @apply w-10 h-10 rounded-full bg-gray-200 text-gray-600 flex items-center justify-center font-semibold flex-shrink-0;
+  }
+
+  .step-dot.active {
+    @apply bg-orange-500 text-white;
+  }
+
+  .step-dot.completed {
+    @apply bg-orange-500 text-white;
+  }
+
+  .step-line {
+    @apply flex-1 h-1 bg-gray-200 mx-2;
+  }
+
+  .step-line.active {
+    @apply bg-orange-500;
+  }
+
+  .qr-code-container {
+    @apply bg-white border-2 border-gray-200 rounded-lg p-6 text-center hover:border-orange-400 transition-colors cursor-pointer;
+  }
+
+  .reminder-box {
+    @apply bg-blue-50 border-l-4 border-blue-500 p-4 mb-4 rounded;
+  }
+
+  .reminder-text {
+    @apply text-blue-900 text-sm;
+  }
+
+/* Map styling */
+.map-region {
+  fill: #e2e8f0;
+  stroke: #94a3b8;
+  stroke-width: 1;
+  transition: fill 0.3s ease;
+  opacity: 0.8;
+}
+
+.map-region:hover {
+  fill: #bfdbfe;
+  cursor: pointer;
+  opacity: 1;
+}
+
+.map-region.active {
+  fill: #3b82f6;
+  opacity: 1;
+}
+
+.language-flag {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  overflow: hidden;
+  display: inline-flex;
+  margin-right: 8px;
+  border: 1px solid #e2e8f0;
+  transition: all 0.3s ease;
+}
+
+/* Map tooltip */
+.map-tooltip {
+  position: absolute;
+  background-color: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.375rem;
+  padding: 0.5rem;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  pointer-events: none;
+}
